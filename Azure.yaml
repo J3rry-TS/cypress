@@ -1,1 +1,8 @@
-
+# specific branch build
+trigger:
+  branches:
+    include:
+    -main
+    -releases/*
+    exclude:
+    -releases/old*
