@@ -1,0 +1,17 @@
+name: learn-github-actions
+on: 
+jobs:
+
+trigger: none
+
+
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install cypress --save-dev
+      - run: ./node_modules/.bin/cypress open
+      - run: npx cypress run --record --key 584bc57c-bdff-47b5-a7b1-ef6a96f06976
