@@ -30,8 +30,8 @@ function strRandom(o) {
     return c;
   }
 
-  describe('Load', function (){
-    it('UIX', function (){
+  describe('Procedure', function (){
+    it('New Procedure', function (){
       cy.viewport(1920, 1080)
       cy.visit('https://beta01.medireport.dev/cardio/portal')
       cy.get('[placeholder=Username]').type('Support')
@@ -47,7 +47,7 @@ function strRandom(o) {
       cy.contains('JR').dblclick()
       cy.wait(6000)
       cy.get('.d-flex > .mat-focus-indicator').click()
-      cy.wait(1000)
+      cy.wait(2500)
       cy.get('#mat-select-value-7 > .mat-select-placeholder').click()
       cy.get('#mat-option-17').click()
       cy.get('#mat-select-value-9 > .mat-select-placeholder').click()

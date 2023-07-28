@@ -35,7 +35,7 @@ function strRandom(o) {
   }
   
   
-describe('Load', function (){
+describe('Lesion', function (){
     it('MyLesion', function (){
   cy.visit('https://beta01.medireport.dev/')
     cy.get('[placeholder=Username]').type('Support')
@@ -84,7 +84,6 @@ describe('Load', function (){
     cy.contains('moderate').click()
     cy.get('#mat-select-value-49 > .mat-select-placeholder').click()
     cy.contains('small LAD').click()
-    //dispatch title
     cy.wait(4000)
     ///Creation Lesion on schema
     cy.get('.c-prd-container').click(650, 550)///pRCA
@@ -93,7 +92,7 @@ describe('Load', function (){
     cy.contains('Lesion').click()
     cy.get('.c-prd-container').click(653, 553)
     cy.wait(4000)
-    ///Master chief
+    ///First Lesion
     cy.get('#mat-select-value-71 > .mat-select-placeholder').click()
     cy.contains('< 30%').click()
     cy.wait(1500)
