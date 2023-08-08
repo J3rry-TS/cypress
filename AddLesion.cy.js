@@ -91,7 +91,7 @@ describe('Lesion', function (){
     cy.wait(1000)
     cy.contains('Lesion').click()
     cy.get('.c-prd-container').click(653, 553)
-    cy.wait(4000)
+    cy.wait(10000)
     ///First Lesion
     cy.get('#mat-select-value-71 > .mat-select-placeholder').click()
     cy.contains('< 30%').click()

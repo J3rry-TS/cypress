@@ -45,7 +45,7 @@ function strRandom(o) {
       cy.get('#mat-chip-list-input-0').type('JR {Enter}') 
       cy.wait(2000)
       cy.contains('JR').dblclick()
-      cy.wait(6000)
+      cy.wait(7000)
       cy.get('.d-flex > .mat-focus-indicator').click()
       cy.wait(2500)
       cy.get('#mat-select-value-7 > .mat-select-placeholder').click()
@@ -62,7 +62,7 @@ function strRandom(o) {
       cy.get('#saveBtn').click()
       cy.wait(5500)
       ///Fill procedure PCI template "Start"
-      cy.get('#mat-select-value-21 > .mat-select-placeholder').click()
+      cy.get('#mat-select-value-21 > .mat-select-placeholder').type('Bean')
       cy.wait(500)
       cy.contains('Bean Jerry').click()
       cy.get('procedure-section-start').scrollTo(0, 0)

@@ -40,16 +40,25 @@ function strRandom(o) {
       cy.wait(3500)
       cy.visit('https://beta01.medireport.dev/cardio/settings/physicians')
       cy.wait(4500)
+      ///Page Attendees & Referrers configuration
       cy.get('#physicianControlPanel > div > :nth-child(3)').click()
+      /// Add new physician
       cy.get('#mat-select-value-5 > .mat-select-placeholder').click()
+      ///title of physician
       cy.wait(2500)
       cy.get('#mat-option-260 > .mat-option-text').click()
       cy.get('#mat-input-2').type(testname)
+      ///First name
       cy.get('#mat-input-3').type(testname)
+      ///Last name
       cy.get('#mat-radio-6 > .mat-radio-label > .mat-radio-label-content').click()
+      ///Gender
       cy.get('#referring > .mat-checkbox-layout > .mat-checkbox-label').click()
+      /// Referring capabilities
       cy.get('#admitting > .mat-checkbox-layout > .mat-checkbox-label').click()
+      /// Attending capabilities
       cy.get('#saveBtn').click()
+      /// Confirm Creation new physician
       cy.wait(2500)
     })
 })
