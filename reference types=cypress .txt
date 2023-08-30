@@ -1,0 +1,95 @@
+/// <reference types="cypress" />
+
+before(() => {
+    cy.clearLocalStorageSnapshot();
+  });
+  
+  beforeEach(() => {
+    cy.restoreLocalStorage();
+  });
+  
+  afterEach(() => {
+    cy.saveLocalStorage();
+  });
+  
+  context('Check Cardio Portal', () => {
+  
+    it('Open CardioReport', () => {
+
+        cy.openCardio();
+  
+        cy.wait(5000);
+  
+        cy.inputInCustomText('.m-search', 'JERRY {Enter}')
+  
+        cy.wait(3500)
+  
+        // Hide auto completion results
+        cy.inputInCustomText('.m-search', '{esc}')
+  
+        cy.get('#clearAppSearchBtn')
+        .click()
+  
+        cy.get('#navigateToQueryBuilderBtn')
+        .click()
+  
+        cy.get('#closeWindowBtn')
+        .click()
+  
+        cy.wait(2500)
+  
+
+        cy.get('#listview_procedure_count', {timeout: 4000}).then(($el) => {
+           
+            const Appointment = $el.find(':nth-child(1) > .mat-card > .col-8 > .c-db-card-info-body')
+            .text();
+            const Procedures = $el.find(':nth-child(2) > .mat-card > .col-8 > .c-db-card-info-body')
+            .text();
+            const Progress = $el.find(':nth-child(3) > .mat-card > .col-8 > .c-db-card-info-body')
+            .text();
+            const Done = $el.find(':nth-child(4) > .mat-card > .col-8 > .c-db-card-info-body')
+            .text();
+
+/// const number = $el.find('#listview_procedure_count, span').each
+        cy.intercept(
+            "GET", "https://dev42.medireport.dev/api/cardio/ProceduresOData/*")
+          .as("odata.count()");
+
+          cy.get(':nth-child(1) > .mat-card > .col-8')
+          .click();
+
+          cy.get('#listview_procedure_count, span').then(spanElement => {
+            const number = parseInt(spanElement.text(),);
+            ///cy.get(':nth-child(1) > .mat-card > .col-8').contains('#listview_procedure_count, span')
+            ///cy.wrap(spanElement).to.equal(Appointment)
+
+          ///expect(number).to.equal(Appointment)
+
+          cy.wait('@odata.count()', { timeout: 5000}).then((interception) => {
+            
+            const responseBody = interception.response.body;
+
+            ///expect(responseBody.procedureActs).to.equal(number)
+
+         // cy.get('#listview_procedure_count')
+   // .contains(Appointment)
+
+          
+    cy.get('listview_procedure_count span').then(spanElement => {    
+const valeurAleatoire = parseInt(spanElement.text(), 10);
+
+expect(valeurAleatoire).to.be.greaterThan(0);
+    })
+          })
+})
+
+
+    ///cy.get(Progress).invoke ("be equal", 'In Progress' or 'Entrance');   expect(F).to.eqaul(G);
+    
+    ///cy.wrap(Procedure).invoke ("be equal", number);
+   // cy.wrap(Done).invoke ("be equal", 'Done' 'NotDoneInWard' 'Leave');
+
+      })
+    })
+
+    })
